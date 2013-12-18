@@ -1,18 +1,17 @@
 extends layout
 
 block content
-
   .menu
     h2 Menu
     ul.nav.nav-pills
       li
         a(href='/') Home
       li.active
-        a(href='/tasks') Todo List
+        a(href='/tasks') Applications
       li
         a(href="/tasks/completed") Completed
   h1= title
-
+                        
   .list
     .item.add-task
       div.action
@@ -24,8 +23,6 @@ block content
         input(type='hidden', value=locals._csrf, name='_csrf')
         div.name
           input(type="text", name="name", placeholder='Add a new task')
-        div.delete
-          input.btn.btn-primary.btn-sm(type="submit", value='add')
     if (tasks.length === 0)
       | No tasks.
     each task, index in tasks
@@ -36,14 +33,18 @@ block content
             input(type='hidden', value='true', name='completed')
             input(type='hidden', value=locals._csrf, name='_csrf')
             input(type='submit', class='btn btn-success btn-xs task-done', value='done')
-        div.num
-          span=index+1
-            |.&nbsp;
+
+        div.dateapplied
+          div
+                  -var day = task.Applied.getDate()
+                  -var m = task.Applied.getMonth()
+                  -var y = task.Applied.getFullYear()
+                  -var prettydate = m + " / " + day + " / " + y
+          div
+          span.name=prettydate
+          |&nbsp
         div.name
-          span.name=task.name
-          //- no support for DELETE method in forms
-          //- http://amundsen.com/examples/put-delete-forms/
-          //- so do XHR request instead from public/javascripts/main.js
-        div.delete
-          a(class='btn btn-danger btn-xs task-delete', data-task-id=task._id.toString(), data-csrf=locals._csrf) delete
+          span.name=task.CompanyName
+        div.position
+          span.name=task.Position
 

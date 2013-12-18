@@ -4,10 +4,10 @@
  */
 
 exports.list = function(req, res, next){
-  req.db.tasks.find({completed: false}).toArray(function(error, tasks){
+  req.db.tasks.find().toArray(function(error, tasks){
     if (error) return next(error);
     res.render('tasks', {
-      title: 'Todo List',
+      title: 'Job Applications',
       tasks: tasks || []
     });
   });

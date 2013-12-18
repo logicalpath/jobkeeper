@@ -9,15 +9,14 @@ var tasks = require('./routes/tasks');
 var http = require('http');
 var path = require('path');
 var mongoskin = require('mongoskin');
-var db = mongoskin.db('mongodb://localhost:27017/jobkeeper?auto_reconnect', {safe:true});
+var db = mongoskin.db('mongodb://localhost:27017/jobdb?auto_reconnect', {safe:true});
 var app = express();
 app.use(function(req, res, next) {
   req.db = {};
   req.db.tasks = db.collection('applications');
   next();
 })
-app.locals.appname = 'Express.js Todo App'
-
+app.locals.appname = 'Job Keeper'
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
