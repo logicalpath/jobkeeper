@@ -15,17 +15,19 @@ block content
       | No applications.
     each application, index in applications
       .item
-        div.dateapplied
+        div.dateapplied(class=(application.Status =='active')? 'activeClass':'expiredClass')
           div
                   -var day = application.Applied.getDate()
                   -var m = application.Applied.getMonth()
                   -var y = application.Applied.getFullYear()
                   -var prettydate = m + " / " + day + " / " + y
           div
+
           span.name=prettydate
           |&nbsp
         div.name
           span.name=application.CompanyName
         div.position
           span.name=application.Position
+
 

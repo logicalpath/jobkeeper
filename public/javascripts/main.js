@@ -11,15 +11,6 @@ $(document).ready(function() {
     $alert.addClass('alert-info');
     $alert.show();
   })
-  function prettyDate(dateString){
-    var d = date.getDate();
-    var monthNames = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
-    var m = monthNames[date.getMonth()];
-    var y = date.getFullYear();
-    return d+' '+m+' '+y;
-  }
-
   $('.task-delete').click(function(event) {
     $target = $(event.target)
     $.ajax({
