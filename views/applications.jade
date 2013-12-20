@@ -15,6 +15,12 @@ block content
       | No applications.
     each application, index in applications
       .item
+       div.action
+         form(action='/applications/#{application._id}', method='post')
+           input(type='hidden', value=application._id.toString(), name='id')
+           input(type='hidden', value='true', name='expired')
+           input(type='hidden', value=locals._csrf, name='_csrf')
+           input(type='submit', class='btn btn-success btn-xs task-done', value='done') 
         div.dateapplied(class=(application.Status =='active')? 'activeClass':'expiredClass')
           div
                   -var day = application.Applied.getDate()
