@@ -1,8 +1,6 @@
-> Todo app with Express.js
+Jobkeeper is a Mongodb, Node, Express, Jade web app that tracks job applications. Company name, positon, interviews, referrrals, source of the job posting, date applied.  The current version 0.0.1 simply lists the job apps that were imported via a file of json documents derived from a spreadsheet.
 
-This is an example of classical (no front-end JavaScript frameworks) web application built with Express.js 3.3.5.
-The full source code is available at [github.com/azat-co/todo-express](http://github.com/azat-co/todo-express).
 
-More Express.js in [Express.js Guide](http://expressjsguide.com).
 
-More Node.js frameworks at [nodeframework.com](http://nodeframework.com).
+This app was infomred and inspired by [azat] (https://github.com/azat-co/todo-express)
+
