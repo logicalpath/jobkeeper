@@ -14,10 +14,15 @@ exports.list = function(req, res, next){
 };
 
 exports.update = function(req, res, next){
-  req.db.applications.updateById(req.application._id, {$set: {Status: 'expired'}}, function (error, count) {
+  var mystatus = req.body.Status === 'active' ? 'active':'expired';
+  console.log("mystatus is ",mystatus);
+  req.db.applications.updateById(req.application._id, {$set: {Status: mystatus }}, function (error, count) {
     if (error) return next(error);
     if (count !==1) return next(new Error('Something went wrong.'));
     res.redirect('/applications');
   });
 };
 
+
+
+// class=(application.Status =='active')? 'activeClass':'expiredClass'
