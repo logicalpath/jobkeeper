@@ -7,7 +7,9 @@ block content
       li
         a(href='/') Home
       li.active
-        a(href='/applications') Applications
+        a(href='/applications') List Applications
+      li.active
+        a(href='/newapp') New Job Application
   h1= title
                         
   .list
@@ -48,6 +50,5 @@ block content
         div.name
           span.name=application.CompanyName
         div.position
-          span.name=application.Position
-
+          a(href='/viewapp/#{application._id}') #{application.Position}
 

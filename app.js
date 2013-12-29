@@ -53,6 +53,9 @@ app.param('application_id', function(req, res, next, applicationId) {
 app.get('/', routes.index);
 app.get('/applications', applications.list);
 app.post('/applications/:application_id', applications.update);
+app.get('/viewapp/:application_id', applications.view);
+app.get('/newapp', applications.newapp);
+app.post('/addapp', applications.add);
 
 app.all('*', function(req, res){
   res.send(404);

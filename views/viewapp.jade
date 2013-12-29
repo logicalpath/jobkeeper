@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  .menu
+    h2 Menu
+    ul.nav.nav-pills
+      li
+        a(href='/') Home
+      li.active
+        a(href='/applications') Applications
+  h1= "the Application"
+                        
+     div.dateapplied
+       div
+                  -var day = application.Applied.getDate()
+                  -var m = application.Applied.getMonth()
+                  -var y = application.Applied.getFullYear()
+                  -var prettydate = m + " / " + day + " / " + y
+       div
+
+       span.name=prettydate
+       |&nbsp
+     div.name
+       span.name=application.CompanyName
+     div.position
+       span.name=application.Position
+     div.status
+       span.name=application.Status
+     div.source
+       span.name=application.Source
+     div.notes
+       span.name=application.Notes
+     div.Recruiter
+             -if(application.Recruiter)
+                span.name=application.Recruiter.Firm
+                span.name=application.Recruiter.Name
+     div.phoneinterview
+             -if(application.PhoneInterview)
+               |Phone Interview
+     div.inpersoninterview
+             -if(application.InPersonInterview)
+               |In Person Interview
+     div.rejection
+             -if(application.RejectionLetter)
+               |Rejection Letter
+     div.referred
+             -if(application.ReferredBy)
+              | Referred By: 
+       span.name=application.ReferredBy
+

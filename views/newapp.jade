@@ -1,0 +1,26 @@
+extends layout
+
+block content
+   .menu
+     h2 Menu
+     ul.nav.nav-pills
+       li
+         a(href='/') Home
+       li.active
+         a(href='/applications') List Applications
+       li.active
+         a(href='/newapp') Add Job Application
+   .item.add-task 
+     div.action
+       div
+         -var nowdate = new Date
+       div
+       form(action='/addapp', method='post')
+         input(type='hidden', value=locals._csrf, name='_csrf')
+         input(type='hidden', value=nowdate, name='Applied')
+         input(type='hidden', value='active', name='Status')
+         input(type='text', name='CompanyName', placeholder='Company Name', required)
+         input(type='text', name ='Position', placeholder='Position', required)
+         input(type='submit', class='btn btn-success btn-xs task-done',value='Create')
+
+
