@@ -40,7 +40,7 @@ block content
         div.dateapplied(class=myclass)
           div
                   -var day = application.Applied.getDate()
-                  -var m = application.Applied.getMonth()
+                  -var m = application.Applied.getMonth() + 1
                   -var y = application.Applied.getFullYear()
                   -var prettydate = m + " / " + day + " / " + y
           div

@@ -13,7 +13,7 @@ block content
    .item.add-task 
      div.action
        div
-         -var nowdate = new Date
+         -var nowdate = Date()
        div
        form(action='/addapp', method='post')
          input(type='hidden', value=locals._csrf, name='_csrf')
