@@ -52,7 +52,7 @@ app.param('application_id', function(req, res, next, applicationId) {
 
 app.get('/', routes.index);
 app.get('/applications', applications.list);
-app.post('/applications/:application_id', applications.update);
+app.post('/updatestat/:application_id', applications.statusupdate);
 app.del('/applications/:application_id', applications.del);
 app.get('/viewapp/:application_id', applications.view);
 app.get('/newapp', applications.newapp);

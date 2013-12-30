@@ -8,7 +8,9 @@ block content
         a(href='/') Home
       li.active
         a(href='/applications') List Applications
-  h1= "the Application"
+      li.active
+        a(href='/newapp') New Job Application 
+    h2= "the Application"
                         
      div.dateapplied
        div
@@ -21,19 +23,28 @@ block content
        span.name=prettydate
        |&nbsp
      div.name
+       | Company: 
        span.name=application.CompanyName
      div.position
+       | Position:
        span.name=application.Position
      div.status
+       | Status:
        span.name=application.Status
      div.source
+       | Source:      
        span.name=application.Source
      div.notes
+       | Notes:
        span.name=application.Notes
      div.Recruiter
              -if(application.Recruiter)
-                span.name=application.Recruiter.Firm
-                span.name=application.Recruiter.Name
+                div
+                  | Recruiting Firm:
+                  span.name=application.Recruiter.Firm
+                div
+                  | Recruiter Name:
+                  span.name=application.Recruiter.Name
      div.phoneinterview
              -if(application.PhoneInterview)
                |Phone Interview
@@ -51,4 +62,10 @@ block content
      div.delete
         a(class='btn btn-danger btn-xs application-delete', data-application-id=application._id.toString(), data-csrf=locals._csrf) delete
 
-
+// form(action='/addapp', method='post')
+// input(type='hidden', value=locals._csrf, name='_csrf')
+//  input(type='hidden', value=nowdate, name='Applied')
+//  input(type='hidden', value='active', name='Status')
+//  input(type='text', name='CompanyName', placeholder='Company Name', required)
+//  input(type='text', name ='Position', placeholder='Position', required)
+//  input(type='submit', class='btn btn-success btn-xs task-done',value='Create')

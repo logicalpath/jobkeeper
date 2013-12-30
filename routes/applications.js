@@ -26,7 +26,14 @@ exports.add = function(req, res, next){
       CompanyName: req.body.CompanyName,
       Position: req.body.Position,
       Applied: new Date(req.body.Applied),
-      Status: req.body.Status
+      Status: req.body.Status,
+      Source: req.body.Source,
+      Notes: req.body.Notes,
+      Url: req.body.Url,
+      ReferredBy: req.body.ReferredBy,
+      PhoneInterview: req.body.PhoneInterview,
+      InPersonInterview: req.body.InPersonInterview,
+      RejectionLetter: req.body.RejectionLetter
       }, function(error, task){
         if (error) return next(error);
 	   if (!task) return next(new Error('Failed to save.'));
@@ -35,7 +42,7 @@ exports.add = function(req, res, next){
 };
 
  
-exports.update = function(req, res, next){
+exports.statusupdate = function(req, res, next){
   var mystatus = req.body.Status === 'active' ? 'active':'expired';
   req.db.applications.updateById(req.application._id, {$set: {Status: mystatus }}, function (err, count) {
     if (err) return next(err);

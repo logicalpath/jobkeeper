@@ -21,6 +21,23 @@ block content
          input(type='hidden', value='active', name='Status')
          input(type='text', name='CompanyName', placeholder='Company Name', required)
          input(type='text', name ='Position', placeholder='Position', required)
+         label
+                 select(name= 'Source')
+                   option(value='cold') Cold
+                   option(value='sourced') Sourced
+                   option(value='network') Network
+                   <br>
+         input(type='text', name='Notes', placeholder='Notes')
+         input(type='text', name='Url', placeholder='Url of add')
+         input(type='text', name='ReferredBy', placeholder='Referred by')
+         input(type='checkbox', name='PhoneInterview', value='X') 
+         | Phone interview 
+         br
+         input(type='checkbox', name='InPersonInterview', value='X') 
+         | In person interview  
+         br
+         input(type='checkbox', name='RecectionLetter', value='X') 
+         | Rejection Letter 
+         br
          input(type='submit', class='btn btn-success btn-xs task-done',value='Create')
-
 

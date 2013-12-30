@@ -32,7 +32,7 @@ block content
             nxtstat = 'active'
         div
         div.action
-         form(action='/applications/#{application._id}', method='post')
+         form(action='/updatestat/#{application._id}', method='post')
            input(type='hidden', value=application._id.toString(), name='id')
            input(type='hidden', value=nxtstat, name='Status')
            input(type='hidden', value=locals._csrf, name='_csrf')
