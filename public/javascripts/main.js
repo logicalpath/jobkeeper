@@ -11,17 +11,17 @@ $(document).ready(function() {
     $alert.addClass('alert-info');
     $alert.show();
   })
-  $('.task-delete').click(function(event) {
+  $('.application-delete').click(function(event) {
     $target = $(event.target)
     $.ajax({
       type: 'DELETE',
-      url: '/tasks/' + $target.attr('data-task-id'),
+      url: '/applications/' + $target.attr('data-application-id'),
       data: {
         _csrf: $target.attr('data-csrf')
       },
       success: function(response) {
         $target.parent().parent().remove();
-        $alert.trigger('success', 'Task was removed.');
+        $alert.trigger('success', 'Application was removed.');
       },
       error: function(error) {
         $alert.trigger('error', error);

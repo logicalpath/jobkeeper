@@ -7,7 +7,7 @@ block content
       li
         a(href='/') Home
       li.active
-        a(href='/applications') Applications
+        a(href='/applications') List Applications
   h1= "the Application"
                         
      div.dateapplied
@@ -47,4 +47,8 @@ block content
              -if(application.ReferredBy)
               | Referred By: 
        span.name=application.ReferredBy
+
+     div.delete
+        a(class='btn btn-danger btn-xs application-delete', data-application-id=application._id.toString(), data-csrf=locals._csrf) delete
+
 

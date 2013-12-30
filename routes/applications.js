@@ -54,3 +54,13 @@ exports.view = function(req, res, next){
     });
   });
 };
+
+
+exports.del = function(req, res, next) {
+  req.db.applications.removeById(req.application._id, function(error, count) {
+    if (error) return next(error);
+        if (count !==1) return next(new Error('Something went wrong.'));
+           console.info('Deleted job application from  %s with id=%s completed.', req.application.CompanyName, req.application._id);
+           res.send(200);
+    });
+};
