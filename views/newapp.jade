@@ -17,8 +17,8 @@ block content
        div
        form(action='/addapp', method='post')
          input(type='hidden', value=locals._csrf, name='_csrf')
-         input(type='hidden', value=nowdate, name='Applied')
          input(type='hidden', value='active', name='Status')
+         input(type='date', name='Applied')
          input(type='text', name='CompanyName', placeholder='Company Name', required)
          input(type='text', name ='Position', placeholder='Position', required)
          label

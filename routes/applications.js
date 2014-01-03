@@ -22,6 +22,7 @@ exports.newapp = function(req, res, next){
 
 exports.add = function(req, res, next){
   if (!req.body || !req.body.CompanyName) return next(new Error('No data provided.'));
+    console.log("date ",req.body.Applied);
     req.db.applications.save({
       CompanyName: req.body.CompanyName,
       Position: req.body.Position,
