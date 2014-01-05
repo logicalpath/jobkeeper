@@ -6,10 +6,12 @@ block content
      ul.nav.nav-pills
        li
          a(href='/') Home
-       li.active
-         a(href='/applications') List Applications
+       li
+         a(href='/applications') List All Applications
        li.active
          a(href='/newapp') Add Job Application
+       li
+         a(href='/inplay') Jobs in Play 
    .item.add-task 
      div.action
        div
@@ -36,7 +38,7 @@ block content
          input(type='checkbox', name='InPersonInterview', value='X') 
          | In person interview  
          br
-         input(type='checkbox', name='RecectionLetter', value='X') 
+         input(type='checkbox', name='RejectionLetter', value='X') 
          | Rejection Letter 
          br
          input(type='submit', class='btn btn-success btn-xs task-done',value='Create')

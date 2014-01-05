@@ -7,14 +7,17 @@ block content
       li
         a(href='/') Home
       li.active
-        a(href='/applications') List Applications
+        a(href='/applications') List All Applications
       li.active
         a(href='/newapp') New Job Application 
+      li
+        a(href='/inplay') Jobs in Play 
     h2= "the Application"
                         
+  .application-show-edit            
      div.dateapplied
        div
-                  -var day = application.Applied.getDate()
+                  -var day = application.Applied.getDate() + 1
                   -var m = application.Applied.getMonth() + 1
                   -var y = application.Applied.getFullYear()
                   -var prettydate = m + " / " + day + " / " + y
@@ -37,6 +40,9 @@ block content
      div.notes
        | Notes:
        span.name=application.Notes
+     div.Url
+       | Url:
+       span.name=application.Url
      div.Recruiter
              -if(application.Recruiter)
                 div
@@ -54,6 +60,13 @@ block content
      div.rejection
              -if(application.RejectionLetter)
                |Rejection Letter
+             -else
+               div.action
+                  form(action='/update/#{application._id}', method='post')
+                    input(type='hidden', value=application._id.toString(), name='id')
+                    input(type='hidden', value=RejectionLetter, name='X')
+                    input(type='hidden', value=locals._csrf, name='_csrf')
+                    input(type='submit', class='btn btn-success btn-xs task-done', value='Rejected')
      div.referred
              -if(application.ReferredBy)
               | Referred By: 
@@ -62,6 +75,8 @@ block content
      div.delete
         a(class='btn btn-danger btn-xs application-delete', data-application-id=application._id.toString(), data-csrf=locals._csrf) delete
 
+
+
 // form(action='/addapp', method='post')
 // input(type='hidden', value=locals._csrf, name='_csrf')
 //  input(type='hidden', value=nowdate, name='Applied')
@@ -69,3 +84,12 @@ block content
 //  input(type='text', name='CompanyName', placeholder='Company Name', required)
 //  input(type='text', name ='Position', placeholder='Position', required)
 //  input(type='submit', class='btn btn-success btn-xs task-done',value='Create')
+
+// div.action
+//    form(action='/updatestat/#{application._id}', method='post')
+//    input(type='hidden', value=application._id.toString(), name='id')
+//    input(type='hidden', value=nxtstat, name='Status')
+//    input(type='hidden', value=locals._csrf, name='_csrf')
+//    input(type='submit', class='btn btn-success btn-xs task-done', value=nxtbtn)
+
+

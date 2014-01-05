@@ -6,8 +6,20 @@
 exports.list = function(req, res, next){
   req.db.applications.find().sort({Applied:-1}).toArray(function(err, applications){
     if (err) return next(err);
+    console.log("number of applications ", applications.length);
     res.render('applications', {
       title: 'Job Applications',
+      applications: applications || []
+    });
+  });
+};
+
+exports.inplay = function(req, res, next){
+  req.db.applications.find({Status: 'active',RejectionLetter: null}).sort({Applied:-1}).toArray(function(err, applications){
+    if (err) return next(err);
+    console.log("number of applications ", applications.length);
+    res.render('inplay', {
+      title: 'Applications In Play',
       applications: applications || []
     });
   });
@@ -52,6 +64,13 @@ exports.statusupdate = function(req, res, next){
   });
 };
 
+exports.update = function(req, res, next){
+  req.db.applications.updateById(req.application._id, {$set: {RejectionLetter: 'X'}}, function (err, count) {
+    if (err) return next(err);
+    if (count !==1) return next(new Error('Something went wrong.'));
+    res.redirect('/applications');
+  });
+};
 
 exports.view = function(req, res, next){
   req.db.applications.findOne(req.application._id, function(err, application){
