@@ -8,7 +8,7 @@ block content
         a(href='/') Home
       li.active
         a(href='/applications') List All Applications
-      li.active
+      li
         a(href='/newapp') New Job Application 
       li
         a(href='/inplay') Jobs in Play 
@@ -37,9 +37,6 @@ block content
      div.source
        | Source:      
        span.name=application.Source
-     div.notes
-       | Notes:
-       span.name=application.Notes
      div.Url
        | Url:
        span.name=application.Url
@@ -54,15 +51,29 @@ block content
      div.phoneinterview
              -if(application.PhoneInterview)
                |Phone Interview
+             -else
+               div.action
+                  form(action='/updatephonei/#{application._id}', method='post')
+                    input(type='hidden', value=application._id.toString(), name='id')
+                    input(type='hidden', value=PhoneInterview, name='X')
+                    input(type='hidden', value=locals._csrf, name='_csrf')
+                    input(type='submit', class='btn btn-success btn-xs task-done', value='Phone Interview')
      div.inpersoninterview
              -if(application.InPersonInterview)
                |In Person Interview
+             -else
+               div.action
+                  form(action='/updateinperson/#{application._id}', method='post')
+                    input(type='hidden', value=application._id.toString(), name='id')
+                    input(type='hidden', value=InPersonInterview, name='X')
+                    input(type='hidden', value=locals._csrf, name='_csrf')
+                    input(type='submit', class='btn btn-success btn-xs task-done', value='In Person Interview')
      div.rejection
              -if(application.RejectionLetter)
                |Rejection Letter
              -else
                div.action
-                  form(action='/update/#{application._id}', method='post')
+                  form(action='/updatereject/#{application._id}', method='post')
                     input(type='hidden', value=application._id.toString(), name='id')
                     input(type='hidden', value=RejectionLetter, name='X')
                     input(type='hidden', value=locals._csrf, name='_csrf')
@@ -71,25 +82,21 @@ block content
              -if(application.ReferredBy)
               | Referred By: 
        span.name=application.ReferredBy
-
+     div
+             br
+     div
+     div.notes
+       form.form-horizontal(action='/updatenote/#{application._id}', method='post')
+        input(type='hidden', value=application._id.toString(), name='id')
+        input(type='hidden', value=locals._csrf, name='_csrf')
+        .form-group
+          label.col-sm-2.control-label(for='desc') Notes
+          .col-sm-10
+            textarea.form-control#desc(rows="5", name="Notes", placeholder='Enter notes')=application.Notes
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            button.btn.btn-primary(type='submit') Save
      div.delete
         a(class='btn btn-danger btn-xs application-delete', data-application-id=application._id.toString(), data-csrf=locals._csrf) delete
-
-
-
-// form(action='/addapp', method='post')
-// input(type='hidden', value=locals._csrf, name='_csrf')
-//  input(type='hidden', value=nowdate, name='Applied')
-//  input(type='hidden', value='active', name='Status')
-//  input(type='text', name='CompanyName', placeholder='Company Name', required)
-//  input(type='text', name ='Position', placeholder='Position', required)
-//  input(type='submit', class='btn btn-success btn-xs task-done',value='Create')
-
-// div.action
-//    form(action='/updatestat/#{application._id}', method='post')
-//    input(type='hidden', value=application._id.toString(), name='id')
-//    input(type='hidden', value=nxtstat, name='Status')
-//    input(type='hidden', value=locals._csrf, name='_csrf')
-//    input(type='submit', class='btn btn-success btn-xs task-done', value=nxtbtn)
 
 

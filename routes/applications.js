@@ -64,8 +64,33 @@ exports.statusupdate = function(req, res, next){
   });
 };
 
-exports.update = function(req, res, next){
+exports.rejectionupdate = function(req, res, next){
   req.db.applications.updateById(req.application._id, {$set: {RejectionLetter: 'X'}}, function (err, count) {
+    if (err) return next(err);
+    if (count !==1) return next(new Error('Something went wrong.'));
+    res.redirect('/applications');
+  });
+};
+
+exports.inpersonupdate = function(req, res, next){
+  req.db.applications.updateById(req.application._id, {$set: {InPersonInterview: 'X'}}, function (err, count) {
+    if (err) return next(err);
+    if (count !==1) return next(new Error('Something went wrong.'));
+    res.redirect('/applications');
+  });
+};
+
+exports.phoneiupdate = function(req, res, next){
+  req.db.applications.updateById(req.application._id, {$set: {PhoneInterview: 'X'}}, function (err, count) {
+    if (err) return next(err);
+    if (count !==1) return next(new Error('Something went wrong.'));
+    res.redirect('/applications');
+  });
+};
+
+exports.updatenote = function(req, res, next){
+	console.log("in updatenote ",req.body.Notes);
+  req.db.applications.updateById(req.application._id, {$set: {Notes: req.body.Notes}}, function (err, count) {
     if (err) return next(err);
     if (count !==1) return next(new Error('Something went wrong.'));
     res.redirect('/applications');
