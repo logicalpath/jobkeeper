@@ -26,15 +26,15 @@ block content
           -var nxtstat = ""
           -myclass = application.Status =='active'? 'activeClass':'expiredClass';
           -if(application.RejectionLetter == "X")
-             comptxt = 'rejected-app'
+             -comptxt = 'rejected-app'
           -if(application.Status == 'active')
-            myclass = 'activeClass'
-            nxtbtn = 'Expire'
-            nxtstat = 'expire'
+            -myclass = 'activeClass'
+            -nxtbtn = 'Expire'
+            -nxtstat = 'expire'
            -else
-            myclass = 'expiredClass'
-            nxtbtn = 'Activate'
-            nxtstat = 'active'
+            -myclass = 'expiredClass'
+            -nxtbtn = 'Activate'
+            -nxtstat = 'active'
         div
         div.action
          form(action='/updatestat/#{application._id}', method='post')
