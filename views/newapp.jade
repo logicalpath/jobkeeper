@@ -23,15 +23,19 @@ block content
          input(type='date', name='Applied')
          input(type='text', name='CompanyName', placeholder='Company Name', required)
          input(type='text', name ='Position', placeholder='Position', required)
+         input(type='text', name='Notes', placeholder='Notes')
+         input(type='text', name='Url', placeholder='Url of add')
+         input(type='text', name='ReferredBy', placeholder='Referred by')
+         <br>
+         | Source:
+         <br>
          label
                  select(name= 'Source')
                    option(value='cold') Cold
                    option(value='sourced') Sourced
                    option(value='network') Network
                    <br>
-         input(type='text', name='Notes', placeholder='Notes')
-         input(type='text', name='Url', placeholder='Url of add')
-         input(type='text', name='ReferredBy', placeholder='Referred by')
+         <br>
          input(type='checkbox', name='PhoneInterview', value='X') 
          | Phone interview 
          br
@@ -41,5 +45,6 @@ block content
          input(type='checkbox', name='RejectionLetter', value='X') 
          | Rejection Letter 
          br
-         input(type='submit', class='btn btn-success btn-xs task-done',value='Create')
+         br
+         input(type='submit', class='btn btn-success btn-sm',value='Create')
 

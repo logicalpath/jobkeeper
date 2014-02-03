@@ -1,5 +1,6 @@
-var Application = require('../models/Application.js');
-var rest = require('./rest.js');
+var mongoskin = require('mongoskin');
+var db = mongoskin.db('mongodb://localhost:27017/jobdb?auto_reconnect', {safe:true});
+
 
 /*
  * GET users listing.
@@ -36,9 +37,8 @@ exports.newapp = function(req, res, next){
 
 exports.add = function(req, res, next){
   if (!req.body || !req.body.CompanyName) return next(new Error('No data provided.'));
-
     console.log("date ",req.body.Applied);
-    var doc = {
+    req.db.applications.save({
       CompanyName: req.body.CompanyName,
       Position: req.body.Position,
       Applied: new Date(req.body.Applied),
@@ -50,11 +50,7 @@ exports.add = function(req, res, next){
       PhoneInterview: req.body.PhoneInterview,
       InPersonInterview: req.body.InPersonInterview,
       RejectionLetter: req.body.RejectionLetter
-    };
-    console.log(doc.CompanyName);
-
-    req.db.applications.save(doc,
-        function(error, task){
+      }, function(error, task){
         if (error) return next(error);
 	   if (!task) return next(new Error('Failed to save.'));
               res.redirect('/applications');

@@ -8,11 +8,12 @@
 
 var http = require('http');
 var https = require('https');
-
-exports.getREST = function(options, callback) {
-
-	var protcl = options.port == 443 ? https: http;
-	var req = protcl.request(options, function(res) {
+var options = {};
+exports.getREST = function(req, res, next) {
+        console.log('inside REST');
+	return next();
+        var protcl = options.port == 443 ? https: http;
+	var restreq = protcl.request(options, function(res) {
 		var output = '';
 		res.setEncoding('utf8');
 
