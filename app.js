@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
 })
 app.locals.appname = 'Job Keeper'
 
-app.set('port', process.env.PORT || 3003);
+app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.favicon());
