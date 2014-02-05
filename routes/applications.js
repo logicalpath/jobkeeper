@@ -1,5 +1,3 @@
-var Application = require('../models/Application.js');
-var rest = require('./rest.js');
 
 /*
  * GET users listing.
@@ -54,9 +52,9 @@ exports.add = function(req, res, next){
     console.log(doc.CompanyName);
 
     req.db.applications.save(doc,
-        function(error, task){
+        function(error, application){
         if (error) return next(error);
-	   if (!task) return next(new Error('Failed to save.'));
+	   if (!application) return next(new Error('Failed to save.'));
               res.redirect('/applications');
 	   })
 };

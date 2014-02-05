@@ -6,9 +6,7 @@
 
 var express = require('express');
 var routes = require('./routes');
-var dbapplications = require('./routes/dbapplications');
 var applications = require('./routes/applications');
-var appl2 = require('./routes/appl2');
 var rest = require('./routes/rest');
 var http = require('http');
 var path = require('path');
@@ -55,15 +53,15 @@ app.param('application_id', function(req, res, next, applicationId) {
 });
 
 app.get('/', routes.index);
-app.get('/applications', dbapplications.list);
-app.get('/inplay', dbapplications.inplay);
-app.post('/updatestat/:application_id', dbapplications.statusupdate);
-app.post('/updateinperson/:application_id', dbapplications.inpersonupdate);
-app.post('/updatephonei/:application_id', dbapplications.phoneiupdate);
-app.post('/updatereject/:application_id', dbapplications.rejectionupdate);
+app.get('/applications', applications.list);
+app.get('/inplay', applications.inplay);
+app.post('/updatestat/:application_id', applications.statusupdate);
+app.post('/updateinperson/:application_id', applications.inpersonupdate);
+app.post('/updatephonei/:application_id', applications.phoneiupdate);
+app.post('/updatereject/:application_id', applications.rejectionupdate);
 app.post('/updatenote/:application_id', applications.updatenote);
-app.del('/applications/:application_id', dbapplications.del);
-app.get('/viewapp/:application_id', dbapplications.view);
+app.del('/applications/:application_id', applications.del);
+app.get('/viewapp/:application_id', applications.view);
 app.get('/newapp', applications.newapp);
 app.post('/addapp', applications.add);
 
