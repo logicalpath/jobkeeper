@@ -68,6 +68,16 @@ block content
                     input(type='hidden', value=InPersonInterview, name='X')
                     input(type='hidden', value=locals._csrf, name='_csrf')
                     input(type='submit', class='btn btn-success btn-xs task-done', value='In Person Interview')
+     div.offeraccepted
+             -if(application.AcceptedOffer)
+               |Offer Accepted
+             -else
+               div.action
+                  form(action='/offeraccepted/#{application._id}', method='post')
+                    input(type='hidden', value=application._id.toString(), name='id')
+                    input(type='hidden', value=AcceptedOffer, name='X')
+                    input(type='hidden', value=locals._csrf, name='_csrf')
+                    input(type='submit', class='btn btn-success btn-xs task-done', value='Offer Accepted')
      div.rejection
              -if(application.RejectionLetter)
                |Rejection Letter

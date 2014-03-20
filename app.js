@@ -3,7 +3,6 @@
  * Module dependencies.
  */
 
-
 var express = require('express');
 var routes = require('./routes');
 var applications = require('./routes/applications');
@@ -58,6 +57,7 @@ app.get('/inplay', applications.inplay);
 app.post('/updatestat/:application_id', applications.statusupdate);
 app.post('/updateinperson/:application_id', applications.inpersonupdate);
 app.post('/updatephonei/:application_id', applications.phoneiupdate);
+app.post('/offeraccepted/:application_id', applications.offerupdate);
 app.post('/updatereject/:application_id', applications.rejectionupdate);
 app.post('/updatenote/:application_id', applications.updatenote);
 app.del('/applications/:application_id', applications.del);

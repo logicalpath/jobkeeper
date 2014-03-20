@@ -47,6 +47,7 @@ exports.add = function(req, res, next){
       ReferredBy: req.body.ReferredBy,
       PhoneInterview: req.body.PhoneInterview,
       InPersonInterview: req.body.InPersonInterview,
+      AcceptedOffer: req.body.AcceptedOffer,
       RejectionLetter: req.body.RejectionLetter
     };
     console.log(doc.CompanyName);
@@ -77,6 +78,13 @@ exports.rejectionupdate = function(req, res, next){
   });
 };
 
+exports.offerupdate = function(req, res, next){
+  req.db.applications.updateById(req.application._id, {$set: {AcceptedOffer: 'X'}}, function (err, count) {
+    if (err) return next(err);
+    if (count !==1) return next(new Error('Something went wrong.'));
+    res.redirect('/applications');
+  });
+};
 exports.inpersonupdate = function(req, res, next){
   req.db.applications.updateById(req.application._id, {$set: {InPersonInterview: 'X'}}, function (err, count) {
     if (err) return next(err);
